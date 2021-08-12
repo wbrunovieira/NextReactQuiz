@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { useState } from 'react'
 import Questao from '../components/Questao'
+import questao from '../model/questao'
 import QuestaoModel from '../model/questao'
 import RespostaModel from '../model/resposta'
 import styles from '../styles/Home.module.css'
@@ -18,9 +19,17 @@ export default function Home() {
   const [questao, setQuestao] = useState(questaoMock);
 
     function respostaFornecida(indice: number) {
-      console.log(indice)
+      
       setQuestao(questao.responderCom(indice));
     }
+    function tempoEsgotado() {
+      if(questao.naoRespondida){
+
+        setQuestao(questao.responderCom(-1));
+      }
+    }
+
+
   return (
     <div style={{
       display:'flex',
@@ -30,7 +39,10 @@ export default function Home() {
     }}>
     
     
-    <Questao valor={questao} respostaFornecida={respostaFornecida}/>
+    <Questao valor={questao}
+     respostaFornecida={respostaFornecida}
+     tempoEsgotado={tempoEsgotado}
+     />
     </div>
   )
 }
