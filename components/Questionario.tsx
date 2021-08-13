@@ -20,7 +20,7 @@ function respostaFornecida(indice: number){
 }
 
     return(
-        <div> className={styles.questionario}
+        <div className={styles.questionario}>
         {props.questao ?
         <Questao 
             valor={props.questao}
