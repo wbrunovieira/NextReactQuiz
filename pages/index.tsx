@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import { useState } from 'react'
-import Questao from '../components/Questao'
-import Botao from '../components/Botao'
+import Questionario  from '../components/Questionario'
 import questao from '../model/questao'
 import QuestaoModel from '../model/questao'
 import RespostaModel from '../model/resposta'
@@ -19,17 +18,13 @@ export default function Home() {
 
   const [questao, setQuestao] = useState(questaoMock);
 
-    function respostaFornecida(indice: number) {
-      
-      setQuestao(questao.responderCom(indice));
-    }
-    function tempoEsgotado() {
-      if(questao.naoRespondida){
+    function questaoRespondida(questao: QuestaoModel){
 
-        setQuestao(questao.responderCom(-1));
-      }
     }
 
+    function irPraProximoPasso(){
+
+    }
 
   return (
     <div style={{
@@ -40,13 +35,13 @@ export default function Home() {
       height: '100vh',
     }}>
     
-    
-    <Questao valor={questao}
-     respostaFornecida={respostaFornecida}
-     tempoEsgotado={tempoEsgotado}
-     tempoResposta={5}
+    <Questionario 
+    questao={questao}
+    ultima={true}
+    questaoRespondida={questaoRespondida}
+    irPraProximoPasso ={irPraProximoPasso}
      />
-     <Botao texto="Proxima" href="/resultado"/>
+   
     </div>
   )
 }
