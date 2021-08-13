@@ -6,36 +6,29 @@ import QuestaoModel from '../model/questao'
 import RespostaModel from '../model/resposta'
 import styles from '../styles/Home.module.css'
 
-const questaoMock = new QuestaoModel(1, 'Melhor cor',[
-  RespostaModel.errada('Verde'),
-  RespostaModel.errada('Vermelha'),
-  RespostaModel.errada('Azul'),
-  RespostaModel.certa('Preta'),
 
-  ])
-
-  const BASE_URL = 'http://localhost:3000/api'
+const BASE_URL = 'http://localhost:3000/api'
 
 export default function Home() {
 
   const [idsDasQuestoes, setIdsDasQuestoes] = useState<number[]>([])
-  const [questao, setQuestao] = useState<QuestaoModel>(questaoMock);
+  const [questao, setQuestao] = useState<QuestaoModel>();
 
   async function carregarIdsDasQuestoes(){
-    const resp = await fetch(`${BASE_URL}/questionatio`);
-    const idsDasQuestoes = await resp.json();
-    setIdsDasQuestoes(idsDasQuestoes);
+      const resp = await fetch(`${BASE_URL}/questionario`);
+      const idsDasQuestoes = await resp.json();
+      setIdsDasQuestoes(idsDasQuestoes);
   }
   async function carregarQuestao(idQuestao: number){
-    const resp = await fetch(`${BASE_URL}/questoes/${idQuestao}`);
-    const json = await resp.json();
-    const novaQuestao = QuestaoModel.criarUsandoObjeto(json);
-    setQuestao(novaQuestao);
+      const resp = await fetch(`${BASE_URL}/questoes/${idQuestao}`);
+      const json = await resp.json();
+      const novaQuestao = QuestaoModel.criarUsandoObjeto(json);
+      setQuestao(novaQuestao);
   }
 
   useEffect(() => {
-    carregarIdsDasQuestoes()
-    console.log(idsDasQuestoes)
+      carregarIdsDasQuestoes()
+      console.log(idsDasQuestoes)
   }, []);
 
   useEffect(() => {
