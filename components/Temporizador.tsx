@@ -17,10 +17,10 @@ export default function Temporizador(props: TemporizadorProps) {
             onComplete={props.tempoEsgotado}
             colors={[
                 ['#BCE596', 0.33],
-                ['#F&B801', 0.33],
+                ['#F7B801', 0.33],
                 ['#ED827A', 0.33],
             ]}>
-                {({ remainingTime }) => remainingTime }
+            {({ remainingTime }) => remainingTime}
             </CountdownCircleTimer>
 
         </div>

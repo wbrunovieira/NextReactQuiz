@@ -21,12 +21,12 @@ function respostaFornecida(indice: number){
 
     return(
         <div className={styles.questionario}>
-        {props.questao ?
-        <Questao 
-            valor={props.questao}
-            tempoResposta={6}
-            respostaFornecida={respostaFornecida}
-            tempoEsgotado={props.irPraProximoPasso}
+            {props.questao ?
+            <Questao 
+                valor={props.questao}
+                tempoResposta={6}
+                respostaFornecida={respostaFornecida}
+                tempoEsgotado={props.irPraProximoPasso}
         />
         : false
         
